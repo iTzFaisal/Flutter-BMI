@@ -5,7 +5,10 @@ import 'reusable_card.dart';
 
 final double buttomContainerHeight = 80;
 final Color activeCardColor = Color(0xFF1D1E33);
+final Color inactiveCardColor = Color(0xFF111328);
 final Color buttomContainerColor = Color(0xFFEB1555);
+
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -13,6 +16,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = inactiveCardColor;
+  Color femaleCardColor = inactiveCardColor;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,14 +33,24 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    color: activeCardColor,
+                    onPress: () {
+                      setState(() {
+                        updateColor(Gender.male);
+                      });
+                    },
+                    color: maleCardColor,
                     child:
                         IconContent(icon: FontAwesomeIcons.mars, label: 'MALE'),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: activeCardColor,
+                    onPress: () {
+                      setState(() {
+                        updateColor(Gender.female);
+                      });
+                    },
+                    color: femaleCardColor,
                     child: IconContent(
                         icon: FontAwesomeIcons.venus, label: 'FEMALE'),
                   ),
@@ -66,5 +82,25 @@ class _InputPageState extends State<InputPage> {
         ],
       ),
     );
+  }
+
+  void updateColor(Gender gender) {
+    // 1 for male , 2 for female
+    if (gender == Gender.male) {
+      if (maleCardColor == inactiveCardColor) {
+        maleCardColor = activeCardColor;
+        femaleCardColor = inactiveCardColor;
+      } else {
+        maleCardColor = inactiveCardColor;
+      }
+    }
+    if (gender == Gender.female) {
+      if (femaleCardColor == inactiveCardColor) {
+        femaleCardColor = activeCardColor;
+        maleCardColor = inactiveCardColor;
+      } else {
+        femaleCardColor = inactiveCardColor;
+      }
+    }
   }
 }
