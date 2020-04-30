@@ -17,3 +17,28 @@ final TextStyle kNumberTextStyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w900,
 );
+
+final TextStyle kLargeButtonTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.bold,
+);
+
+final TextStyle kTitleTextStyle = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.bold,
+);
+
+final TextStyle kResultTextStyle = TextStyle(
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+  color: Color(0xFF24D876),
+);
+
+final TextStyle kBMITextStyle = TextStyle(
+  fontSize: 100,
+  fontWeight: FontWeight.bold,
+);
+
+final TextStyle kBodyTextStyle = TextStyle(
+  fontSize: 22,
+);
